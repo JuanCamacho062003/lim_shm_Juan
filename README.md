@@ -26,11 +26,27 @@ $ ollama pull tinyllama
 
 2. "Git Commit -m "Update Readme.md" : Aqui subimos cambios a la rama y lo que se cuentra entre comillas es el nombre del commit
 
-3. "Git comando git push -u origin main":  Se usa para subir (o "empujar") tus commits locales al repositorio remoto en la rama main.
+3. "Git push -u origin main":  Se usa para subir (o "empujar") tus commits locales al repositorio remoto en la rama main.
 
 4. "Git config --global" se utiliza para configurar opciones globales de Git que se aplican a todos los repositorios en tu sistema.
     * git config --global user.email "tu.email@example.com"
     * git config --global user.name "Tu Nombre"
 ```
+## 4. Prueba de request a la API REST
+Para realizar una peticion básica a la API de ollama e sigue la sieguiente estructura
 
-
+```
+curl -X POST http://localhost:11434/api/generate -d '{
+  "model": "tinyllama",
+  "prompt": "Why is the sky blue?"
+}'
+```
+### 4.1 Consulta a la API REST sin stream
+Prueba de cosnulta sin stream
+```
+curl -X POST http://localhost:11434/api/generate -d '{
+  "model": "tinyllama",
+  "prompt": "Why is the sky blue?",
+  "stream": false
+}'
+```
